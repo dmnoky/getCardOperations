@@ -1,0 +1,17 @@
+com\mcb\soapWS\wsdl\OperationInfoTypeRs.class
+com\mcb\soapWS\wsdl\OperationMBKBonusTypeRs.class
+com\mcb\soapWS\wsdl\ObjectFactory.class
+com\mcb\soapWS\wsdl\GET.class
+com\mcb\cardOperations\restWS\controller\CardOperationsController.class
+com\mcb\cardOperations\restWS\dto\GETResponseDTO.class
+com\mcb\cardOperations\CardOperationsApplication.class
+com\mcb\soapWS\wsdl\package-info.class
+com\mcb\soapWS\wsdl\OperationListTypeRs.class
+com\mcb\cardOperations\restWS\dto\GETResponseDTO$GETResponseDTOBuilder.class
+com\mcb\cardOperations\restWS\dto\GETInputDTO$GETInputDTOBuilder.class
+com\mcb\cardOperations\restWS\exception\BadRequestException.class
+com\mcb\soapWS\wsdl\ErrorInfoTypeRs.class
+com\mcb\cardOperations\restWS\dto\GETInputDTO.class
+com\mcb\cardOperations\soapWS\CardOperationsClient.class
+com\mcb\soapWS\wsdl\GETResponse.class
+com\mcb\cardOperations\soapWS\CardOperationsConfig.class

@@ -1,0 +1,164 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://mkb.ru/SIEBEL_GetClientOperations/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://mkb.ru/SIEBEL_GetClientOperations/">
+   <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="UTOverTransport">
+      <wsp:ExactlyOne>
+         <wsp:All>
+            <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+               <wsp:Policy>
+                  <sp:TransportToken>
+                     <wsp:Policy>
+                        <sp:HttpsToken RequireClientCertificate="false"/>
+                     </wsp:Policy>
+                  </sp:TransportToken>
+                  <sp:AlgorithmSuite>
+                     <wsp:Policy>
+                        <sp:Basic256/>
+                     </wsp:Policy>
+                  </sp:AlgorithmSuite>
+                  <sp:Layout>
+                     <wsp:Policy>
+                        <sp:Lax/>
+                     </wsp:Policy>
+                  </sp:Layout>
+                  <sp:IncludeTimestamp/>
+               </wsp:Policy>
+            </sp:TransportBinding>
+            <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+               <wsp:Policy>
+                  <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient"/>
+               </wsp:Policy>
+            </sp:SignedSupportingTokens>
+         </wsp:All>
+      </wsp:ExactlyOne>
+   </wsp:Policy>
+   <wsdl:types>
+      <xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://mkb.ru/SIEBEL_GetClientOperations/">
+         <xsd:element name="GET">
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="SerNo" nillable="true" type="xsd:string"/>
+                  <xsd:element minOccurs="0" name="StartDate" nillable="true" type="xsd:string"/>
+                  <xsd:element minOccurs="0" name="EndDate" nillable="true" type="xsd:string"/>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="GETResponse">
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="OperationList" type="tns:OperationListTypeRs"/>
+                  <xsd:element name="ErrorInfo" type="tns:ErrorInfoTypeRs"/>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:complexType name="OperationListTypeRs">
+            <xsd:sequence>
+               <xsd:element maxOccurs="unbounded" minOccurs="0" name="OperationInfo" nillable="true" type="tns:OperationInfoTypeRs"/>
+            </xsd:sequence>
+         </xsd:complexType>
+         <xsd:complexType name="ErrorInfoTypeRs">
+            <xsd:sequence>
+               <xsd:element minOccurs="0" name="ErrorCode" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="ErrorMsg" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+         <xsd:complexType name="OperationInfoTypeRs">
+            <xsd:sequence>
+               <xsd:element minOccurs="0" name="Tech_id" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="Id" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="ApprovalCode" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="RespCode" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="DateTransact" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="DateOperation" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="TranCode" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="OperationName" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="OperationDir" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="OperationSum" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="OperationSumCKC" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="Currency" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="CurrencyCKC" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="Wording" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="Merchant" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="RussianMerchant" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="Slave" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="MCC" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="TermCity" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="TermCountry" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="Cash" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="DeclineReason" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="OperationMBKBonus" type="tns:OperationMBKBonusTypeRs"/>
+            </xsd:sequence>
+         </xsd:complexType>
+         <xsd:complexType name="OperationMBKBonusTypeRs">
+            <xsd:sequence>
+               <xsd:element minOccurs="0" name="MKBBonus" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="OperationCategory" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="ConvertToRUB" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="Compensated" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="DateGetBonus" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="OverLimitOper" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="CanGetBonus" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="BonusPercent" nillable="true" type="xsd:string"/>
+               <xsd:element minOccurs="0" name="DateBonusWipe" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="GETRequest">
+      <wsdl:part name="parameters" element="tns:GET"/>
+   </wsdl:message>
+   <wsdl:message name="GETResponse">
+      <wsdl:part name="parameters" element="tns:GETResponse"/>
+   </wsdl:message>
+   <wsdl:portType xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" name="SIEBEL_GetClientOperationsPortType" wsp:PolicyURIs="#UTOverTransport">
+      <wsdl:operation name="GET">
+         <wsdl:input message="tns:GETRequest" wsaw:Action="http://mkb.ru/SIEBEL_GetClientOperations/GET"/>
+         <wsdl:output message="tns:GETResponse" wsaw:Action="http://mkb.ru/SIEBEL_GetClientOperations/SIEBEL_GetClientOperations/GETResponse"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="SIEBEL_GetClientOperationsSoap11Binding" type="tns:SIEBEL_GetClientOperationsPortType">
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="GET">
+         <soap:operation soapAction="http://mkb.ru/SIEBEL_GetClientOperations/GET" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="SIEBEL_GetClientOperationsSoap12Binding" type="tns:SIEBEL_GetClientOperationsPortType">
+      <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="GET">
+         <soap12:operation soapAction="http://mkb.ru/SIEBEL_GetClientOperations/GET" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="SIEBEL_GetClientOperationsHttpBinding" type="tns:SIEBEL_GetClientOperationsPortType">
+      <http:binding verb="POST"/>
+      <wsdl:operation name="GET">
+         <http:operation location="GET"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="SIEBEL_GetClientOperations">
+      <wsdl:port name="SIEBEL_GetClientOperationsHttpsSoap11Endpoint" binding="tns:SIEBEL_GetClientOperationsSoap11Binding">
+         <soap:address location="https://wso2-test.mcb.ru:8243/services/SIEBEL_GetClientOperations.SIEBEL_GetClientOperationsHttpsSoap11Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="SIEBEL_GetClientOperationsHttpsSoap12Endpoint" binding="tns:SIEBEL_GetClientOperationsSoap12Binding">
+         <soap12:address location="https://wso2-test.mcb.ru:8243/services/SIEBEL_GetClientOperations.SIEBEL_GetClientOperationsHttpsSoap12Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="SIEBEL_GetClientOperationsHttpsEndpoint" binding="tns:SIEBEL_GetClientOperationsHttpBinding">
+         <http:address location="https://wso2-test.mcb.ru:8243/services/SIEBEL_GetClientOperations.SIEBEL_GetClientOperationsHttpsEndpoint"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>
